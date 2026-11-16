@@ -1,0 +1,17 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Hasil sesi dibaca publik oleh halaman /download/[session_id] (ID acak, sulit ditebak)
+    match /sessions/{id} {
+      allow read: if true;
+      allow create: if request.resource.data.keys().hasAll(['id', 'ticket_id', 'image_url', 'gif_url']);
+      allow update, delete: if false;
+    }
+    // Aplikasi ini kiosk satu lokasi tanpa login. Untuk produksi: aktifkan Firebase Auth
+    // (mis. anonymous / akun kasir) + App Check, lalu ganti `if true` dengan `if request.auth != null`.
+    match /tickets/{id}   { allow read, write: if true; }
+    match /counters/{id}  { allow read, write: if true; }
+    match /booths/{id}    { allow read, write: if true; }
+    match /settings/{id}  { allow read, write: if true; }
+  }
+}
