@@ -200,9 +200,9 @@ function BoothApp() {
       <Snow />
 
       {/* ---------- header ---------- */}
-      <header className="relative z-10 flex h-[76px] shrink-0 items-center justify-between px-8">
+      <header className="relative z-10 flex min-h-[64px] shrink-0 items-center justify-between gap-3 px-4 py-2 sm:h-[76px] sm:px-8">
         <div className="flex items-center gap-4">
-          <span className="font-serif text-2xl font-bold uppercase tracking-[0.25em]">{BRAND}</span>
+          <span className="font-serif text-base font-bold uppercase tracking-[0.12em] sm:text-2xl sm:tracking-[0.25em]">{BRAND}</span>
           <span className="hidden font-script text-2xl text-gold-400 sm:inline">Merry Christmas</span>
         </div>
         {stage === "standby" ? (
@@ -227,7 +227,7 @@ function BoothApp() {
       )}
 
       {/* ---------- konten ---------- */}
-      <main className="relative z-10 min-h-0 flex-1">
+      <main className="relative z-10 min-h-0 flex-1 overflow-y-auto lg:overflow-hidden">
         {stage === "standby" && <StandbyScreen onTicket={handleTicket} busy={busy} error={error} cameraId={cameraId} />}
 
         {stage === "design" && (
@@ -241,7 +241,7 @@ function BoothApp() {
         )}
 
         {stage === "camera" && template && (
-          <div className="mx-auto flex h-full max-w-[1500px] flex-col px-6 pb-5">
+          <div className="mx-auto flex h-full max-w-[1500px] flex-col px-3 pb-3 sm:px-6 sm:pb-5">
             <CameraCapture
               aspectRatio={slotAspect(template)}
               totalShots={TOTAL_SHOTS}
