@@ -34,15 +34,15 @@ export function ResultScreen({
   }, [pageSize]);
 
   return (
-    <div className="mx-auto grid h-full w-full max-w-[1400px] gap-8 px-6 pb-6 pt-2 lg:grid-cols-[1fr_1fr]">
-      <section className="flex min-h-0 items-center justify-center rounded-[2rem] bg-cream-50/[0.05] p-6 ring-1 ring-cream-50/10">
+    <div className="mx-auto grid min-h-full w-full max-w-[1400px] gap-8 px-4 pb-6 pt-2 sm:px-6 lg:h-full lg:grid-cols-[1fr_1fr]">
+      <section className="flex items-center justify-center rounded-[2rem] lg:min-h-0 bg-cream-50/[0.05] p-6 ring-1 ring-cream-50/10">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={sheetUrl} alt="Hasil foto" className="max-h-full max-w-full rounded-lg shadow-2xl" />
+        <img src={sheetUrl} alt="Hasil foto" className="max-h-[50vh] max-w-full rounded-lg shadow-2xl lg:max-h-full" />
       </section>
 
-      <section className="flex min-h-0 flex-col items-center justify-center gap-6 text-center">
+      <section className="flex flex-col items-center justify-center gap-6 text-center lg:min-h-0">
         <p className="text-xs font-bold tracking-[0.3em] text-gold-400">STEP.06</p>
-        <h1 className="font-serif text-5xl font-bold text-cream-50">Fotomu sedang dicetak</h1>
+        <h1 className="font-serif text-3xl font-bold text-cream-50 sm:text-5xl">Fotomu sedang dicetak</h1>
         <p className="text-cream-50/60">
           {copies} lembar 4R{copies > 1 ? ` (termasuk ${copies - 1} extra print)` : ""} · ambil di slot printer
         </p>
