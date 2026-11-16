@@ -37,14 +37,14 @@ export function DesignSelect({
 
   const list = templatesFor(orientation);
   return (
-    <div className="mx-auto flex h-full w-full max-w-[1400px] flex-col gap-5 px-6 pb-6 pt-2">
+    <div className="mx-auto flex min-h-full w-full max-w-[1400px] flex-col gap-5 px-4 pb-6 pt-2 sm:px-6 lg:h-full">
       <div>
         <p className="text-xs font-bold tracking-[0.3em] text-gold-400">STEP.02</p>
-        <h1 className="font-serif text-5xl font-bold text-cream-50">Pilih desain cetak</h1>
+        <h1 className="font-serif text-3xl font-bold text-cream-50 sm:text-5xl">Pilih desain cetak</h1>
       </div>
 
       {/* orientasi */}
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid gap-4 sm:grid-cols-2">
         {(["PORTRAIT", "LANDSCAPE"] as Orientation[]).map((o) => {
           const on = o === orientation;
           return (
@@ -64,7 +64,7 @@ export function DesignSelect({
       </div>
 
       {/* template */}
-      <div className="flex min-h-0 flex-1 items-stretch gap-5 overflow-x-auto pb-1">
+      <div className="flex h-[360px] items-stretch gap-5 overflow-x-auto pb-1 lg:h-auto lg:min-h-0 lg:flex-1">
         {list.map((t) => {
           const on = t.id === templateId;
           return (
