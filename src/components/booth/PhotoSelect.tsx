@@ -56,16 +56,16 @@ export function PhotoSelect({
 
   const aspect = template.slots[0].w / template.slots[0].h;
   return (
-    <div className="mx-auto grid h-full w-full max-w-[1500px] gap-6 px-6 pb-6 pt-2 lg:grid-cols-[1.25fr_1fr]">
+    <div className="mx-auto grid min-h-full w-full max-w-[1500px] gap-6 px-4 pb-6 pt-2 sm:px-6 lg:h-full lg:grid-cols-[1.25fr_1fr]">
       {/* ---- kiri: pilih foto + filter ---- */}
-      <section className="flex min-h-0 flex-col gap-4">
+      <section className="flex flex-col gap-4 lg:min-h-0">
         <div>
           <p className="text-xs font-bold tracking-[0.3em] text-gold-400">STEP.04 · 05</p>
-          <h1 className="font-serif text-5xl font-bold text-cream-50">Pilih {PICK_COUNT} foto terbaik</h1>
+          <h1 className="font-serif text-3xl font-bold text-cream-50 sm:text-5xl">Pilih {PICK_COUNT} foto terbaik</h1>
           <p className="text-cream-50/60">Ketuk foto sesuai urutan yang kamu mau. Terpilih {selected.length}/{PICK_COUNT}.</p>
         </div>
 
-        <div className="grid min-h-0 flex-1 grid-cols-3 content-center gap-4">
+        <div className="grid grid-cols-2 content-center gap-3 sm:grid-cols-3 sm:gap-4 lg:min-h-0 lg:flex-1">
           {shots.map((s) => {
             const idx = selected.indexOf(s.id);
             const on = idx >= 0;
@@ -102,10 +102,10 @@ export function PhotoSelect({
       </section>
 
       {/* ---- kanan: pratinjau hasil ---- */}
-      <section className="flex min-h-0 flex-col items-center gap-4 rounded-[2rem] bg-cream-50/[0.05] p-5 ring-1 ring-cream-50/10">
+      <section className="flex flex-col items-center gap-4 rounded-[2rem] lg:min-h-0 bg-cream-50/[0.05] p-5 ring-1 ring-cream-50/10">
         <p className="text-sm font-medium tracking-widest text-cream-50/60">PRATINJAU CETAK</p>
-        <div className="flex min-h-0 flex-1 items-center justify-center">
-          <canvas ref={previewRef} className="max-h-full max-w-full rounded-lg shadow-2xl" style={{ aspectRatio: `${sheet.width}/${sheet.height}`, background: "#fbf7ee" }} />
+        <div className="flex items-center justify-center lg:min-h-0 lg:flex-1">
+          <canvas ref={previewRef} className="max-h-[60vh] max-w-full lg:max-h-full rounded-lg shadow-2xl" style={{ aspectRatio: `${sheet.width}/${sheet.height}`, background: "#fbf7ee" }} />
         </div>
         <Button variant="gold" size="xl" className="w-full" disabled={selected.length < PICK_COUNT} onClick={onConfirm}>
           Cetak foto →
