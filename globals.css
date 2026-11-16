@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html, body {
+  min-height: 100%;
+}
+
+body {
+  @apply bg-cream-50 font-sans text-pine-900 antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Kiosk: cegah seleksi teks / zoom yang tak sengaja */
+.kiosk {
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+/* ---------- Cetak ---------- */
+/* Area cetak dirender lewat <PrintPortal> langsung di <body>. Di layar disembunyikan. */
+.print-portal { display: none; }
+
+@media print {
+  html, body { background: #fff !important; margin: 0 !important; padding: 0 !important; }
+  body > *:not(.print-portal) { display: none !important; }
+  .print-portal { display: block !important; }
+  .print-page { break-after: page; page-break-after: always; }
+  .print-page:last-child { break-after: auto; page-break-after: auto; }
+}
+
+/* Struk thermal 58mm */
+.receipt {
+  width: 58mm;
+  padding: 2mm 2.5mm 6mm;
+  color: #000;
+  background: #fff;
+  font-family: "Courier New", ui-monospace, monospace;
+  font-size: 11px;
+  line-height: 1.35;
+}
+.receipt .row { display: flex; justify-content: space-between; gap: 4px; }
+.receipt .center { text-align: center; }
+.receipt .dash { border-top: 1px dashed #000; margin: 4px 0; }
+.receipt .pin { font-size: 24px; letter-spacing: 4px; font-weight: 700; }
+
+/* Pemindai QR: cermin visual saja (decode tetap pada frame asli) */
+.qr-reader video { transform: scaleX(-1); object-fit: cover; width: 100% !important; height: 100% !important; }
+.qr-reader { border: 0 !important; }
+.qr-reader img { display: none; }
